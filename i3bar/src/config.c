@@ -305,6 +305,12 @@ static int config_boolean_cb(void *params_, int val) {
         return 1;
     }
 
+    if (!strcmp(cur_key, "disable_power_saving_mode")) {
+        DLOG("disable_power_saving_mode = %d\n", val);
+        config.disable_power_saving_mode = val;
+        return 1;
+    }
+
     if (!strcmp(cur_key, "verbose")) {
         if (!config.verbose) {
             DLOG("verbose = %d\n", val);

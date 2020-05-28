@@ -471,6 +471,7 @@ state BAR:
   'workspace_min_width'    -> BAR_WORKSPACE_MIN_WIDTH
   'strip_workspace_numbers' -> BAR_STRIP_WORKSPACE_NUMBERS
   'strip_workspace_name' -> BAR_STRIP_WORKSPACE_NAME
+  'disable_power_saving_mode' -> BAR_DISABLE_POWER_SAVING_MODE
   'verbose'                -> BAR_VERBOSE
   'colors'                 -> BAR_COLORS_BRACE
   '}'
@@ -590,6 +591,10 @@ state BAR_STRIP_WORKSPACE_NUMBERS:
 state BAR_STRIP_WORKSPACE_NAME:
   value = word
       -> call cfg_bar_strip_workspace_name($value); BAR
+
+state BAR_DISABLE_POWER_SAVING_MODE:
+  value = word
+      -> call cfg_bar_disable_power_saving_mode($value); BAR
 
 state BAR_VERBOSE:
   value = word

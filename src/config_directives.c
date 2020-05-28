@@ -509,6 +509,10 @@ CFGFUN(bar_hidden_state, const char *hidden_state) {
     current_bar->hidden_state = (strcmp(hidden_state, "hide") == 0 ? S_HIDE : S_SHOW);
 }
 
+CFGFUN(bar_disable_power_savings_mode, const char *disable_power_savings_mode) {
+    current_bar->disable_power_savings_mode = eval_boolstr(disable_power_savings_mode);
+}
+
 CFGFUN(bar_id, const char *bar_id) {
     current_bar->id = sstrdup(bar_id);
 }

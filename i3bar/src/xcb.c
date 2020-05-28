@@ -349,7 +349,10 @@ static void hide_bars(void) {
         }
         xcb_unmap_window(xcb_connection, walk->bar.id);
     }
-    stop_child();
+
+    if(!config.disable_power_savings_mode) {
+        stop_child();
+    }
 }
 
 /*
@@ -1201,7 +1204,10 @@ static void xcb_prep_cb(struct ev_loop *loop, ev_prepare *watcher, int revents) 
         switch (type) {
             case XCB_VISIBILITY_NOTIFY:
                 /* Visibility change: a bar is [un]obscured by other window */
-                handle_visibility_notify((xcb_visibility_notify_event_t *)event);
+                if(!config->disable_power_saving_mode) {
+                    handle_visibility_notify((xcb_visibility_notify_event_t *)event);
+                }
+
                 break;
             case XCB_EXPOSE:
                 if (((xcb_expose_event_t *)event)->count == 0) {
@@ -1958,7 +1964,9 @@ void reconfig_windows(bool redraw_bars) {
                     cont_child();
                     map_cookie = xcb_map_window_checked(xcb_connection, walk->bar.id);
                 } else {
-                    stop_child();
+                    if(!config.disablepower_saving_mode) {
+                        stop_child();
+                    }
                 }
 
                 if (config.hide_on_modifier == M_HIDE) {

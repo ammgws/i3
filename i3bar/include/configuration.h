@@ -55,6 +55,7 @@ typedef struct config_t {
     int ws_min_width;
     bool strip_ws_numbers;
     bool strip_ws_name;
+    bool disable_power_saving_mode;
     char *bar_id;
     char *command;
     char *fontname;

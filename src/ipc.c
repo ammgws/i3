@@ -828,6 +828,9 @@ static void dump_bar_config(yajl_gen gen, Barconfig *config) {
     ystr("strip_workspace_name");
     y(bool, config->strip_workspace_name);
 
+    ystr("disable_power_saving_mode");
+    y(bool, config->disable_power_saving_mode);
+
     ystr("binding_mode_indicator");
     y(bool, !config->hide_binding_mode_indicator);
 

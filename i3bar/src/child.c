@@ -475,7 +475,7 @@ static void stdin_io_first_line_cb(struct ev_loop *loop, ev_io *watcher, int rev
     if (child.version > 0) {
         /* If hide-on-modifier is set, we start of by sending the
          * child a SIGSTOP, because the bars aren't mapped at start */
-        if (config.hide_on_modifier) {
+        if (config.hide_on_modifier && !config.disable_power_saving_mode) {
             stop_child();
         }
         draw_bars(read_json_input(buffer + consumed, rec - consumed));
